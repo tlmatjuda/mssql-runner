@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/tlmatjuda/mssql-runner/core"
+	"github.com/tlmatjuda/this-and-that/files"
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 	"os"
@@ -14,12 +15,12 @@ func main() {
 	var args = os.Args[1:]
 
 	// We are expecting at least the first arg which is the main command
-	if len(args) < 1 {
-		logs.Error.Fatal("Not enough commands to run.")
+	if len(args) != core.CLI_ARGS_TOTAL {
+		logs.Error.Fatal("There are arguments missing, please check")
 	}
 
-	environmentArg := args[0]
-	sqlDirArg := args[1]
+	environmentArg := args[core.CLI_ARGS_ENVIRONMENT_INDEX]
+	sqlDirArg := args[core.CLI_ARGS_SQL_FILES_INDEX]
 	core.ValidateArgs(environmentArg, sqlDirArg)
 
 	var selectedEnvironment = core.FindSelectedEnvironment(environmentArg)
@@ -31,16 +32,26 @@ func main() {
 	logs.Info.Printf("PASSWORD : ( Yea right :) )")
 	logs.Info.Printf("")
 
-	userConfirmationsArg := promptUser("If this is correct, please type either : Yes or No to continue ...")
+	userConfirmationsArg := PromptUserInput("If this is correct, please type either : Yes or No to continue ...")
 	core.ValidateConfirmationArg(userConfirmationsArg)
 	if text.EqualsIgnoreCase(core.KEY_YES, userConfirmationsArg) {
-		// TODO : Run SQL here
+
+		// Connect to the database first
+		core.ConnectToDatabase(selectedEnvironment)
+
+		// Run SQL Files one by one
+		filesList := files.List(sqlDirArg)
+		for _, fileData := range filesList {
+			sqlFilePath := sqlDirArg + "/" + fileData.Name()
+			logs.Info.Printf("Running SQL File : %v", sqlFilePath)
+			core.RunSqlFile(sqlFilePath)
+		}
 	}
 
-	logs.Info.Printf("All done with the process now.")
+	logs.Info.Printf("Process complete")
 }
 
-func promptUser(promptMessage string) string {
+func PromptUserInput(promptMessage string) string {
 	var userInput string
 
 	if text.StringNotBlank(promptMessage) {
