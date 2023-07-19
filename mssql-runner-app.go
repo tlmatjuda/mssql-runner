@@ -32,6 +32,7 @@ func main() {
 	logs.Info.Printf("")
 
 	userConfirmationsArg := promptUser("If this is correct, please type either : Yes or No to continue ...")
+	core.ValidateConfirmationArg(userConfirmationsArg)
 	if text.EqualsIgnoreCase(core.KEY_YES, userConfirmationsArg) {
 		// TODO : Run SQL here
 	}

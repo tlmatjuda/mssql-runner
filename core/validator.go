@@ -23,7 +23,7 @@ func ValidateArgs(environmentArg string, sqlDirArg string) {
 	}
 }
 
-func validateConfirmationArg(userConfirmationArg string) {
+func ValidateConfirmationArg(userConfirmationArg string) {
 	if text.StringBlank(userConfirmationArg) {
 		logs.Error.Fatalln("Confirmation response expected")
 	}

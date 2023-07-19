@@ -28,6 +28,17 @@ func init() {
 	}
 }
 
+func FindSelectedEnvironment(environmentArg string) DatabaseEnvironment {
+	var currenEnv DatabaseEnvironment
+	for _, envRecord := range databaseEnvList {
+		if envRecord.Environment == environmentArg {
+			currenEnv = envRecord
+			break
+		}
+	}
+	return currenEnv
+}
+
 func fetchDatabaseEnvironments() []DatabaseEnvironment {
 	content := loadJsonConfigContent()
 	return jsonToEnvironmentStructure(content)
@@ -51,17 +62,6 @@ func jsonToEnvironmentStructure(jsonContent string) []DatabaseEnvironment {
 	}
 
 	return environments
-}
-
-func FindSelectedEnvironment(environmentArg string) DatabaseEnvironment {
-	var currenEnv DatabaseEnvironment
-	for _, envRecord := range databaseEnvList {
-		if envRecord.Environment == environmentArg {
-			currenEnv = envRecord
-			break
-		}
-	}
-	return currenEnv
 }
 
 func environmentExists(environmentName string) bool {
