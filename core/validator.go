@@ -1,11 +1,11 @@
-package main
+package core
 
 import (
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 )
 
-func validateArgs(environmentArg string, sqlDirArg string) {
+func ValidateArgs(environmentArg string, sqlDirArg string) {
 	if text.StringBlank(environmentArg) {
 		logs.Error.Fatalln("Environment name required")
 	}

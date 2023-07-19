@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/tlmatjuda/mssql-runner/core"
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 	"os"
@@ -19,9 +20,9 @@ func main() {
 
 	environmentArg := args[0]
 	sqlDirArg := args[1]
-	validateArgs(environmentArg, sqlDirArg)
+	core.ValidateArgs(environmentArg, sqlDirArg)
 
-	var selectedEnvironment = findSelectedEnvironment(environmentArg)
+	var selectedEnvironment = core.FindSelectedEnvironment(environmentArg)
 	logs.Info.Printf("You are about to execute SQL files in no particular order towards the : [ %v ] environment", selectedEnvironment.Environment)
 	logs.Info.Println("The database details are as follows : ")
 	logs.Info.Printf("HOST : %v", selectedEnvironment.Host)
@@ -31,7 +32,7 @@ func main() {
 	logs.Info.Printf("")
 
 	userConfirmationsArg := promptUser("If this is correct, please type either : Yes or No to continue ...")
-	if text.EqualsIgnoreCase(KEY_YES, userConfirmationsArg) {
+	if text.EqualsIgnoreCase(core.KEY_YES, userConfirmationsArg) {
 		// TODO : Run SQL here
 	}
 

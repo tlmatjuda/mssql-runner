@@ -1,4 +1,4 @@
-package main
+package core
 
 import (
 	"encoding/json"
@@ -53,7 +53,7 @@ func jsonToEnvironmentStructure(jsonContent string) []DatabaseEnvironment {
 	return environments
 }
 
-func findSelectedEnvironment(environmentArg string) DatabaseEnvironment {
+func FindSelectedEnvironment(environmentArg string) DatabaseEnvironment {
 	var currenEnv DatabaseEnvironment
 	for _, envRecord := range databaseEnvList {
 		if envRecord.Environment == environmentArg {
