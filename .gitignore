@@ -22,10 +22,10 @@ go.work
 go.sum
 
 # Custom files TOOB CLI
-
-
-
 .idea
 .idea/
 *.iml
+
+# Custom files TOOB CLI
+.vscode
 
