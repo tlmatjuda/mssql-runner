@@ -1,6 +1,7 @@
 package core
 
 import (
+	"github.com/tlmatjuda/this-and-that/files"
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 )
@@ -18,7 +19,7 @@ func ValidateArgs(environmentArg string, sqlDirArg string) {
 		logs.Error.Fatalf("Environment name : %v does not exists, we only support : %v", environmentArg, databaseEnvNames)
 	}
 
-	if environmentNotExists(sqlDirArg) {
+	if files.Exists(sqlDirArg) {
 		logs.Error.Fatalf("SQL file directory : %v does not exists", sqlDirArg)
 	}
 }
