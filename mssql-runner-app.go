@@ -7,6 +7,7 @@ import (
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -25,6 +26,7 @@ func main() {
 
 	var selectedEnvironment = core.FindSelectedEnvironment(environmentArg)
 	logs.Info.Printf("You are about to execute SQL files in no particular order towards the : [ %v ] environment", selectedEnvironment.Environment)
+	logs.Info.Printf("")
 	logs.Info.Println("The database details are as follows : ")
 	logs.Info.Printf("HOST : %v", selectedEnvironment.Host)
 	logs.Info.Printf("PORT : %v", selectedEnvironment.Port)
@@ -42,10 +44,16 @@ func main() {
 		// Run SQL Files one by one
 		filesList := files.List(sqlDirArg)
 		for _, fileData := range filesList {
-			sqlFilePath := sqlDirArg + "/" + fileData.Name()
-			logs.Info.Printf("Running SQL File : %v", sqlFilePath)
-			core.RunSqlFile(sqlFilePath)
+			if strings.Contains(fileData.Name(), core.MS_SQL_FILE_EXTENSION) {
+				sqlFilePath := sqlDirArg + "/" + fileData.Name()
+				logs.Info.Printf("Running SQL File : %v", sqlFilePath)
+				core.RunSqlFile(sqlFilePath)
+			}
 		}
+	} else {
+		logs.Info.Printf("")
+		logs.Info.Println("Since you did not type : \"Yes\" we will not continue with the process, bye bye! ")
+		os.Exit(-1)
 	}
 
 	logs.Info.Printf("Process complete")

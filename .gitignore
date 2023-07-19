@@ -2,11 +2,13 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
+# Mainly Windows ones in this case
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
+mssql-runner
 
 # Test binary, built with `go test -c`
 *.test
@@ -14,18 +16,17 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
 
 # Go workspace file
 go.work
 go.sum
+
 
 # Custom files TOOB CLI
 .idea
 .idea/
 *.iml
 
+
 # Custom files TOOB CLI
 .vscode
-

@@ -4,10 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	_ "github.com/denisenkom/go-mssqldb"
 	"github.com/tlmatjuda/this-and-that/files"
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
-	"log"
 	"strings"
 )
 
@@ -50,10 +50,10 @@ func ConnectToDatabase(currenEnv DatabaseEnvironment) {
 	connectionString := BuildConnectionString(currenEnv)
 	dataAccess, sqlError = sql.Open("sqlserver", connectionString)
 	if sqlError != nil {
-		log.Fatalf("ConnectToDatabase() Error connecting to the database : %v", sqlError.Error())
+		logs.Error.Fatalf("ConnectToDatabase() Error connecting to the database : %v", sqlError.Error())
 	}
 
-	log.Printf("Connected to the database successfully!")
+	logs.Info.Printf("Connected to the database successfully!")
 }
 
 func BuildConnectionString(currenEnv DatabaseEnvironment) string {
