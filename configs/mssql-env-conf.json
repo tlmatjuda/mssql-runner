@@ -1,0 +1,16 @@
+[
+  {
+    "environment": "dev",
+    "username": "<dev-user>",
+    "password": "<dev-pass>",
+    "port": 1234,
+    "host": "<dev-host>"
+  },
+  {
+    "environment": "qa",
+    "username": "<qa-user>",
+    "password": "<qa-pass>",
+    "port": 1234,
+    "host": "<qa-host>"
+  }
+]
