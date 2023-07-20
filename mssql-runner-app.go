@@ -31,7 +31,7 @@ func main() {
 	logs.Info.Printf("PASSWORD : ( Yea right :) )")
 	logs.Info.Printf("")
 
-	userConfirmationsArg := core.PromptUserInput("If this is correct, please type either : Yes or No to continue ...")
+	userConfirmationsArg := core.PromptUserInput("If this is correct, please type either : \"Yes\" to continue or \"No\" to stop the process.")
 	core.ValidateConfirmationArg(userConfirmationsArg)
 	if text.EqualsIgnoreCase(core.KEY_YES, userConfirmationsArg) {
 
