@@ -99,7 +99,7 @@ INFO  2023/07/20 09:49:09 If this is correct, please type either : "Yes" to cont
 Yes
 INFO  2023/07/20 09:49:11 Found 1 SQL files
 INFO  2023/07/20 09:49:11 Connected to the database successfully!
-INFO  2023/07/20 09:49:11 Running SQL File : /Users/tlmatjuda/workspace/toob/mssql-runner/configs/create-person-tables.sql
+INFO  2023/07/20 09:49:11 Running SQL File : /<wherever>/<your>/<sql-files>/create-person-tables.sql
 INFO  2023/07/20 09:49:11 Process complete
 ```
 
