@@ -3,28 +3,28 @@
 This is a small CLI app meant to integrate with a database of your choice to execute ".sql" files against it.<br/>
 It the current integration is for Microsoft SQL Server.<br/>
 
-**NB :** At the moment I am using my own internal modules so it's not reusable, until I can publish those modules as well.
+At the moment I am using my own internal modules so it's not reusable, until I can publish those modules as well.<br/>
+It will run SQL files in no particular order, so make sure you run sql chagnes that are not dependant on each other.<br/><br/>
 
 ## TECH STACK
 
 For interest sake I used :
 
 * Google's **[Go](https://go.dev/)** v.1.20.x
-* IntelliJ IDEA with Go Lang Plugin
+* IntelliJ IDEA with Go Lang Plugin<br/><br/>
 
 ## DRIVING THE APP
 
-Once you have the binary / executable based on the OS you can do the following to drive.
-
-You will need a json configuration : **"mssql-env-conf.json"** inside a sub-folder named **"configs"**
-
-So you you will end up having something like the folliwinig in your file system :
+Once you have the binary / executable based on the OS you can do the following to drive.<br/>
+You will need a json configuration : **"mssql-env-conf.json"** inside a sub-folder named **"configs"**<br/>
+So you you will end up having something like the folliwinig in your file system :<br/><br/>
 
 ```plaintext
 configs/mssql-env-conf.json
 mssql-runner
 mssql-runner.exe
 ```
+<br/>
 
 The json config structure is as follows :
 
@@ -39,7 +39,7 @@ The json config structure is as follows :
   }
 ]
 ```
-
+<br/><br/>
 You drive this tool by running the executable file.
 
 When doing so you need to supply two parameters
@@ -108,10 +108,4 @@ Finally you may go and verify your data on the database service to make sure thi
 
 
 ## CONCLUSION
-
-
-
-## Code Navigation
-
-Just like most languages, you can start looking at the ```main.go``` file and taking it from there. <br/>
-Think of this like java's ```public static void main (String args[])```
+This cli app is a used to execute SQL files towards your target database. 
