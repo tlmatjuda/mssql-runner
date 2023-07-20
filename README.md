@@ -104,8 +104,7 @@ INFO  2023/07/20 09:49:11 Process complete
 ```
 
 
-Finally you may go and verify your data on the database service to make sure things went fine.
-
+Finally you may go and verify your data on the database service to make sure things went fine.<br/><br/>
 
 ## CONCLUSION
 This cli app is a used to execute SQL files towards your target database. 
