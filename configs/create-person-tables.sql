@@ -1,0 +1,14 @@
+USE [LocalTest]
+GO
+
+DROP TABLE IF EXISTS dbo.Person
+GO
+
+
+CREATE TABLE Person
+(
+    Id INT NOT NULL IDENTITY PRIMARY KEY,
+    FirstName VARCHAR(100) NOT NULL,
+    Surname VARCHAR(100)
+);
+GO

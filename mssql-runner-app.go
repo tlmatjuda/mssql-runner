@@ -1,13 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/tlmatjuda/mssql-runner/core"
-	"github.com/tlmatjuda/this-and-that/files"
 	"github.com/tlmatjuda/this-and-that/logs"
 	"github.com/tlmatjuda/this-and-that/text"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -34,22 +31,14 @@ func main() {
 	logs.Info.Printf("PASSWORD : ( Yea right :) )")
 	logs.Info.Printf("")
 
-	userConfirmationsArg := PromptUserInput("If this is correct, please type either : Yes or No to continue ...")
+	userConfirmationsArg := core.PromptUserInput("If this is correct, please type either : Yes or No to continue ...")
 	core.ValidateConfirmationArg(userConfirmationsArg)
 	if text.EqualsIgnoreCase(core.KEY_YES, userConfirmationsArg) {
 
-		// Connect to the database first
-		core.ConnectToDatabase(selectedEnvironment)
-
 		// Run SQL Files one by one
-		filesList := files.List(sqlDirArg)
-		for _, fileData := range filesList {
-			if strings.Contains(fileData.Name(), core.MS_SQL_FILE_EXTENSION) {
-				sqlFilePath := sqlDirArg + "/" + fileData.Name()
-				logs.Info.Printf("Running SQL File : %v", sqlFilePath)
-				core.RunSqlFile(sqlFilePath)
-			}
-		}
+		sqlFiles := core.FindSqlFilesInDirectory(sqlDirArg)
+		core.RunSQLFiles(sqlFiles, selectedEnvironment)
+
 	} else {
 		logs.Info.Printf("")
 		logs.Info.Println("Since you did not type : \"Yes\" we will not continue with the process, bye bye! ")
@@ -57,15 +46,4 @@ func main() {
 	}
 
 	logs.Info.Printf("Process complete")
-}
-
-func PromptUserInput(promptMessage string) string {
-	var userInput string
-
-	if text.StringNotBlank(promptMessage) {
-		logs.Info.Println(promptMessage)
-	}
-
-	fmt.Scanln(&userInput)
-	return userInput
 }
