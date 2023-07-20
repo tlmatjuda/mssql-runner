@@ -90,9 +90,9 @@ When you have confirmed then you will see something like :
 INFO  2023/07/20 09:49:09 You are about to execute SQL files in no particular order towards the : [ dev ] environment
 INFO  2023/07/20 09:49:09
 INFO  2023/07/20 09:49:09 The database details are as follows :
-INFO  2023/07/20 09:49:09 HOST : localhost
+INFO  2023/07/20 09:49:09 HOST : <dev-host>
 INFO  2023/07/20 09:49:09 PORT : 1433
-INFO  2023/07/20 09:49:09 USER : sa
+INFO  2023/07/20 09:49:09 USER : <dev-user>
 INFO  2023/07/20 09:49:09 PASSWORD : ( Yea right :) )
 INFO  2023/07/20 09:49:09
 INFO  2023/07/20 09:49:09 If this is correct, please type either : "Yes" to continue or "No" to stop the process.
