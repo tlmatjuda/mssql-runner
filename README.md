@@ -91,7 +91,7 @@ INFO  2023/07/20 09:49:09 You are about to execute SQL files in no particular or
 INFO  2023/07/20 09:49:09
 INFO  2023/07/20 09:49:09 The database details are as follows :
 INFO  2023/07/20 09:49:09 HOST : <dev-host>
-INFO  2023/07/20 09:49:09 PORT : 1433
+INFO  2023/07/20 09:49:09 PORT : 1234
 INFO  2023/07/20 09:49:09 USER : <dev-user>
 INFO  2023/07/20 09:49:09 PASSWORD : ( Yea right :) )
 INFO  2023/07/20 09:49:09
