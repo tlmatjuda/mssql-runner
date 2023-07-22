@@ -14,12 +14,14 @@ fi
 PROJECT_ROOT_PATH=$(dirname ${BUILD_WINDOWS_SCRIPT_PATH})
 cd ${PROJECT_ROOT_PATH}
 
-# Now compiling for windows
+
 echo "Currently in path : ${PROJECT_ROOT_PATH}"
 
+# Now compiling for windows first
 echo "Compiling for Windows OS x64"
 env GOOS=windows GOARCH=amd64 go build .
 
+# And then for Mac OS M Series
 echo "Compiling for Mac OS M-Series Silicon"
 env GOOS=darwin GOARCH=arm64 go build -o .
 
