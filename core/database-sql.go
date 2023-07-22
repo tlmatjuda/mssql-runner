@@ -21,7 +21,6 @@ func init() {
 }
 
 func RunSqlFile(sqlFilePath string) {
-
 	if DatabaseConnectionIsAlive() &&
 		text.StringNotBlank(sqlFilePath) &&
 		files.Exists(sqlFilePath) &&
@@ -34,7 +33,9 @@ func RunSqlFile(sqlFilePath string) {
 			logs.Error.Fatalf("RunSqlFile() SQL ERROR : %v", sqlError.Error())
 		}
 	}
+}
 
+func CloseDatabaseConnection() {
 	defer func(dataAccess *sql.DB) {
 		sqlError := dataAccess.Close()
 		if sqlError != nil {

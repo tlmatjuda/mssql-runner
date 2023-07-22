@@ -24,10 +24,15 @@ func RunSQLFiles(sqlFiles []string, selectedEnvironment DatabaseEnvironment) {
 		logs.Info.Printf("Found %v SQL files", len(sqlFiles))
 		// Connect to the database first
 		ConnectToDatabase(selectedEnvironment)
+
+		// Run the SQL files.
 		for _, sqlFile := range sqlFiles {
 			logs.Info.Printf("Running SQL File : %v", sqlFile)
 			RunSqlFile(sqlFile)
 		}
+
+		// Now Closed Connection since we are done.
+		CloseDatabaseConnection()
 	} else {
 		logs.Info.Printf("No \"%v\" files were found", MS_SQL_FILE_EXTENSION)
 	}
