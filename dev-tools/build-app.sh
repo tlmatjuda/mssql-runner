@@ -18,11 +18,17 @@ cd ${PROJECT_ROOT_PATH}
 echo "Currently in path : ${PROJECT_ROOT_PATH}"
 
 # Now compiling for windows first
-echo "Compiling for Windows OS x64"
+echo "Compiling for Windows OS Intel x64"
 env GOOS=windows GOARCH=amd64 go build .
+mv mssql-runner.exe mssql-runner-amd64.exe
+
+echo "Compiling for Windows OS ARM x64"
+env GOOS=windows GOARCH=arm GOARM=7 go build .
+mv mssql-runner.exe mssql-runner-arm.exe
 
 # And then for Mac OS M Series
 echo "Compiling for Mac OS M-Series Silicon"
 env GOOS=darwin GOARCH=arm64 go build -o .
+mv mssql-runner mssql-runner-mac-arm
 
 echo "Compilation done"

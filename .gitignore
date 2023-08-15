@@ -9,6 +9,7 @@
 *.so
 *.dylib
 mssql-runner
+mssql-runner-mac-arm
 
 # Test binary, built with `go test -c`
 *.test
